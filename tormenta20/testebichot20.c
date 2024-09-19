@@ -1,23 +1,8 @@
-	#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "t20anlz.h"
 // struct responsavel por guardar as informações do Monstro
-typedef struct
-{
-    char nome[100];
-    int Vatq;
-    float dano;
-    int defesa;
-    int resFo;
-    int resM;
-    int resFr;
-    int pv;
-    int CD;
-    int PM;
-    float ND;
-    int tipo;
-} Monstro;
 
 void mostrar(Monstro bicho, int numero);
 void analisar(Monstro bicho, int numero);
@@ -185,8 +170,6 @@ Monstro criar(int x)
     {
         m.CD = 0;
     }
-    // reinicia a variavel pergunta
-     char *pergunta = '\0';
     // mesma coisa da CD
     do
     {
@@ -211,7 +194,7 @@ Monstro criar(int x)
 
 void analisar(Monstro bicho, int numero)
 {
-    float CD; 
-        CD = anlz(bicho);
+    float CD;
+    CD = anlz(bicho);
     printf("%f", CD);
 }

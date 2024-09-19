@@ -20,21 +20,24 @@ typedef struct
 float anlz(Monstro m);
 float anlz(Monstro bicho)
 {
+    float arredondar = 0;
     float calc = 0;
     int cont = 0;
     if (bicho.tipo == 1)
     {
         // calcula o valor de nd do valor de ataque
         printf("%d\n", bicho.Vatq);
-       cont =   0.4007 * bicho.Vatq-2.2326;
-if(cont>0.25){cont=0.25;}
-else if(cont<22){cont=22;}
-calc += cont;
-cont=0;
-
-
-
-
+        cont = 0.4007 * bicho.Vatq - 2.2326;
+        if (cont > 0.25)
+        {
+            cont = 0.25;
+        }
+        else if (cont < 22)
+        {
+            cont = 22;
+        }
+        calc += cont;
+        cont = 0;
 
         // calcula o valor da nd baseado em dano medio
         printf("%f\n", bicho.dano);
@@ -108,8 +111,7 @@ cont=0;
         }
         else if (bicho.dano <= 186)
         {
-            calc = +16;  
-        
+            calc = +16;
         }
         else if (bicho.dano == 200)
         {
@@ -135,7 +137,7 @@ cont=0;
         {
             calc = +22;
         }
-        
+
         // calcula o valor de nd baseado na defesa
         printf("%d\n", bicho.defesa);
         if (bicho.defesa <= 11)
@@ -210,6 +212,7 @@ cont=0;
         {
             calc = +16;
         }
+
         else if (bicho.defesa == 54)
         {
             calc = +17;
@@ -432,7 +435,7 @@ cont=0;
         }
 
         // calcula o valor de PV
-  if (bicho.pv <= 7)
+        if (bicho.pv <= 7)
         {
             calc = +0.25;
         }
@@ -530,62 +533,72 @@ cont=0;
         }
         printf(" teste %f\n", calc);
     }
-    
-    //calcula o CD de efeito:
-    if(bicho.CD!=0){
-    if(bicho.CD==12){
-    calc +=0.25;
-}
-	else if(bicho.CD==13){
-calc +=0.5;
-}
-    if(bicho.CD <=18){
-    
-       for(int x = 13; x < bicho.CD; x++){
-       calc+=1;
-       
-		}
-    }
-    
-    else if(bicho.CD <=30){
-    
-       for(int x = 20; x < bicho.CD && x < 30; x+=2){
-       calc+=1;
-		} }
-    else if(bicho.CD <=35){
-    
-       for(int x = 31; x < bicho.CD && x < 35; x+=2){
-       calc+=1;
-		} 
-    }
 
-        else if(bicho.CD <=44){
-    
-       for(int x = 38; x < bicho.CD && x < 44; x+=2){
-       calc+=1;
-		} 
-    }
-    else if (bicho.CD <= 47)
+    // calcula o CD de efeito:
+    if (bicho.CD != 0)
+    {
+        if (bicho.CD == 12)
+        {
+            calc += 0.25;
+        }
+        else if (bicho.CD == 13)
+        {
+            calc += 0.5;
+        }
+        if (bicho.CD <= 18)
+        {
+
+            for (int x = 13; x < bicho.CD; x++)
+            {
+                calc += 1;
+            }
+        }
+
+        else if (bicho.CD <= 30)
+        {
+
+            for (int x = 20; x < bicho.CD && x < 30; x += 2)
+            {
+                calc += 1;
+            }
+        }
+        else if (bicho.CD <= 35)
+        {
+
+            for (int x = 31; x < bicho.CD && x < 35; x += 2)
+            {
+                calc += 1;
+            }
+        }
+
+        else if (bicho.CD <= 44)
+        {
+
+            for (int x = 38; x < bicho.CD && x < 44; x += 2)
+            {
+                calc += 1;
+            }
+        }
+        else if (bicho.CD <= 47)
         {
             calc = +18;
             arredondar = +19;
             cont++;
         }
-     else if (bicho.CD <= 49)
+        else if (bicho.CD <= 49)
         {
             calc = +20;
         }
-     else if (bicho.CD <= 51)
+        else if (bicho.CD <= 51)
         {
             calc = +21;
         }
-    else if (bicho.CD <= 51)
+        else if (bicho.CD <= 51)
         {
             calc = +22;
         }
-    
-    
-    return calc;
-}
+
+        return calc;
+    }
 
 #endif

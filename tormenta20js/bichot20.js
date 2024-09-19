@@ -1,12 +1,10 @@
-
-import analzt20 from "./t20anlz.js";
 import Monstro from "./t20anlz.js";
 // struct responsavel por guardar as informações do Monstro
 
 
 function mostrar(Monstro bicho,  numero);
 function analisar(Monstro bicho,  numero);
-Monstro criar( numero);
+function criar( numero);
 
 
     // objeto Monstro é guardado em 99 variações
@@ -45,143 +43,136 @@ Monstro criar( numero);
                 {
                     mostrar(A[z], z + 1);
                 };
-                prvarf("\ntodos os monstros mostrados.");
+                console.log("\ntodos os monstros mostrados.");
             }
             else
             {
-                prvarf("você não criou nenhum monstro, por favor adicione!\n");
+                console.log("você não criou nenhum monstro, por favor adicione!\n");
             }
+            break;
+            case 0:
+
+            console.log("fechando programa.....");
             break;
 
         default:
-            if (escolha == 0)
-            {
-                prvarf("fechando programa.....");
-            }
-            else
-            {
-                prvarf("escolha invalida, tente novamente:\n");
-            }
+              
+                console.log("escolha invalida, tente novamente:\n");
+            
         }
     } while (escolha != 0);
     // aqui pergunta a quantidade de Monstros que se deseja avaliar, sendo utilizada no for
 
-    return 0;
-}
 
-void mostrar(Monstro m, var numero)
+
+function mostrar(Monstro m, numero)
 {
-    prvarf("o Monstro numero  %i possui o nome %s, sendo do tipo ", numero, m.nome);
+    console.log("o Monstro numero  "+numero+" possui o nome "+m.nome+", sendo do tipo ");
     if (m.tipo == 1)
     {
-        prvarf("solo");
+        console.log("solo");
     }
     else if (m.tipo == 2)
     {
-        prvarf("lacaio");
+        console.log("lacaio");
     }
     else if (m.tipo == 3)
     {
-        prvarf("especial");
+        console.log("especial");
     }
 
-    prvarf("\n ele tem  %i de bonus de acerto, dando um dano medio de %f\n de resistencias ele possui %i de resistencia forte, %i de resistencia media e %i de resistencia fraca\n \n", m.Vatq, m.dano, m.resFo, m.resM, m.resFr);
+    console.log("\n ele tem  "+m.Vatq+" de bonus de acerto, dando um dano medio de "+%m.dano+"\n de resistencias ele possui"+ %m.resFo+" de resistencia forte, "+m.resM+" de resistencia media e "+m.resFr+" de resistencia fraca\n " );
 
     if (m.CD != 0)
     {
-        {
-            prvarf("sua CD de efeito é %i", m.CD);
+        
+            console.log("sua CD de efeito é: "+ m.CD);
         }
     }
     if (m.PM != 0)
     {
-        prvarf("possuindo %i de PM's", m.PM);
+        console.log("possuindo "+m.PM+" de PM's", );
     }
 
-    prvarf("------------------------------------------------------------------\n");
-}
+    console.log("------------------------------------------------------------------\n");
+
 
 // função que preenche a classe monstro com suas informações pelo usuario
-Monstro criar(var x)
+function criar(x)
 {
     Monstro m;
     // pergunta e respostas são variaveis feitas para guardar as respostas do usuario, no caso do tipo e nivel do monstro são numeros que tem um varervalo definido o programa se nega a analisar algo diferente do necessario
     char pergunta[4];
     var resposta = 0;
-    prvarf("digite nome do Monstro %i \n", x);
-    scanf("%s", m.nome);
+    m.nome = prompt("digite nome do Monstro %i \n", x);
+    
     do
     {
-        prvarf("você quer colocar alguma ND na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
+        pergunta=prompt("você quer colocar alguma ND na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
 
-        scanf("%s", pergunta);
-    } while (strcmp(pergunta, "sim") != 0 && strcmp(pergunta, "nao") != 0);
-    if (strcmp(pergunta, "sim") == 0)
+    } while (pergunta != "sim" && pergunta != "nao");
+    if (pergunta== "sim")
     {
         do
         {
-            prvarf("digite o nivel de desafio do Monstro, se deseja nd S escreva 21, S+ 22 %i \n", x);
-            scanf("%f", &m.ND);
+            m.ND=prompt("digite o nivel de desafio do Monstro, se deseja nd S escreva 21, S+ 22  \n");
+           
         } while (m.ND == 0.25 && m.ND == 0.5 || m.ND < 1 && m.ND > 22);
     }
-    prvarf("digite o valor de ataque do Monstro %i \n", x);
-    scanf("%i", &m.Vatq);
+    m.Vatq=prompt("digite o valor de ataque do Monstro %i \n", x);
+    
 
-    prvarf("digite a media de dano do Monstro %i \n", x);
-    scanf("%f", &m.dano);
+    m.dano=prompt("digite a media de dano do Monstro %i \n", x);
+    
 
-    prvarf("digite a defesa do Monstro %i \n", x);
-    scanf("%i", &m.defesa);
+    m.defesa=prompt("digite a defesa do Monstro %i \n", x);
+   
+    m.resFo=prompt("digite a resistencia forte da criatura %i \n", x);
+    
+    m.resM=prompt("digite a resistencia media da criatura %i \n", x);
+    
 
-    prvarf("digite a resistencia forte da criatura %i \n", x);
-    scanf("%i", &m.resFo);
+    m.resFr=prompt("digite a resistencia fraca da criatura %i \n", x);
+    
 
-    prvarf("digite a resistencia media da criatura %i \n", x);
-    scanf("%i", &m.resM);
-
-    prvarf("digite a resistencia fraca da criatura %i \n", x);
-    scanf("%i", &m.resFr);
-
-    prvarf("digite os pontos de vida da criatura %i \n", x);
-    scanf("%i", &m.pv);
+    m.pv=prompt("digite os pontos de vida da criatura %i \n", x);
+    
     do
     {
-        prvarf("digite o tipo de monstro: 1-solo, 2-lacaio e 3-especial\n", x);
-        scanf("%i", &m.tipo);
+        m.tipo=prompt("digite o tipo de monstro: 1-solo, 2-lacaio e 3-especial\n", x);
+        
     } while (m.tipo > 1 && m.tipo < 3);
     // ambos esses do-while servem para perguntar se o usuario quer adicionar alguma coisa opcional, caso queira pede para adicionar, do contrario ele preenche com um nulo.
     do
     {
-        prvarf("você quer colocar alguma cd na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
+        pergunta=prompt("você quer colocar alguma cd na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
 
-        scanf("%s", pergunta);
         // essa gambiarra ve se o usuario mandou "sim" ou não até ele escolher um dos dois, com um sim ele pode escrever o atributo, do contrario ele fica nulo
 
-    } while (strcmp(pergunta, "sim") != 0 && strcmp(pergunta, "nao") != 0);
-    if (strcmp(pergunta, "sim") == 0)
+    } while (pergunta != "sim" && pergunta != "nao");
+    if (pergunta != "sim")
     {
-        prvarf("digite a CD efeito da criatura %i: \n", x);
-        scanf("%i", &m.CD);
+        m.CD=prompt("digite a CD efeito da criatura %i: \n", x);
+        
     }
     else
     {
         m.CD = 0;
     }
     // reinicia a variavel pergunta
-     char *pergunta = '\0';
+     
     // mesma coisa da CD
     do
     {
-        prvarf("você quer colocar PM's na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao'  \n", x);
+        pergunta=prompt("você quer colocar PM's na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao'  \n", x);
 
-        scanf("%s", pergunta);
-    } while (strcmp(pergunta, "sim") == 0 && strcmp(pergunta, "nao") == 0);
-    if (strcmp(pergunta, "sim") == 0)
+    } while (pergunta != "sim" && pergunta != "nao");
+    if (pergunta != "sim")
 
     {
 
-        prvarf("digite a quantidade de pontos de mana da criatura %i \n", x);
-        scanf("%i", &m.PM);
+        m.PM=prompt("digite a quantidade de pontos de mana da criatura %i \n", x);
+        
     }
     else
     {
@@ -190,10 +181,11 @@ Monstro criar(var x)
 
     return m;
 }
-
+/*
 void analisar(Monstro bicho, var numero)
 {
     float CD; 
         CD = anlz(bicho);
-    prvarf("%f", CD);
+    console.log("%f", CD);
 }
+*/
