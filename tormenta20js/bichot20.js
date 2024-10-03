@@ -1,27 +1,25 @@
+import input from 'readline-sync'
+
 import Monstro from "./t20anlz.js";
 // struct responsavel por guardar as informações do Monstro
 
 
-function mostrar(Monstro bicho,  numero);
-function analisar(Monstro bicho,  numero);
-function criar( numero);
 
+    // objeto Monstro é guardado em varios array
+    let Monstros = []
 
-    // objeto Monstro é guardado em 99 variações
-    
-    
     do
     {
         // todo esse sistema de switch serve de UI para o usuario levando as funções que ele desejar
-        const escolha = prompt("digite o que deseja fazer: \n 0 -fechar programa \n 1 - criar monstros\n 2 - avaliar monstros \n 3 - mostrar todos os monstros na tela \n");
-   
-        switch (escolha)
+        const escolha = input.question("digite o que deseja fazer: \n 0 -fechar programa \n 1 - criar monstros\n 2 - avaliar monstros \n 3 - mostrar todos os monstros na tela \n");
+       
+        switch (parseInt(escolha))
         {
         case 1:
             // aqui serve para o usuario digitar a quantidade de monstros que deseja levar, em seguida levando a função de criar os monstros
-            const y = prompt("digite a quantidade de Monstros que deseja criar\n");
+            let y = input.question("digite a quantidade de Monstros que deseja criar\n");
             
-
+           
             // o for utilizado para a adição dos Monstros com suas informações
             for (var x = 0; x < y; x++)
             {
@@ -30,10 +28,10 @@ function criar( numero);
             break;
 
         case 2:
-            for (var x = 0; x < y; x++)
-            {
-                analisar(A[x], x + 1);
-            }
+        
+
+
+
             break;
 
         case 3:
@@ -41,7 +39,7 @@ function criar( numero);
             {
                 for (var z = 0; z < y; z++)
                 {
-                    mostrar(A[z], z + 1);
+                    mostrar(Monstros[z], z + 1);
                 };
                 console.log("\ntodos os monstros mostrados.");
             }
@@ -60,126 +58,149 @@ function criar( numero);
                 console.log("escolha invalida, tente novamente:\n");
             
         }
-    } while (escolha != 0);
+    } while (parseInt(escolha) != 0);
     // aqui pergunta a quantidade de Monstros que se deseja avaliar, sendo utilizada no for
 
 
 
-function mostrar(Monstro m, numero)
+function exibirMonstro()
 {
-    console.log("o Monstro numero  "+numero+" possui o nome "+m.nome+", sendo do tipo ");
-    if (m.tipo == 1)
-    {
-        console.log("solo");
-    }
-    else if (m.tipo == 2)
-    {
-        console.log("lacaio");
-    }
-    else if (m.tipo == 3)
-    {
-        console.log("especial");
-    }
+    console.log("o Monstro numero  "+this.numero+" possui o nome "+this.nome+", sendo do tipo: "+this.tipo);
+   
 
-    console.log("\n ele tem  "+m.Vatq+" de bonus de acerto, dando um dano medio de "+%m.dano+"\n de resistencias ele possui"+ %m.resFo+" de resistencia forte, "+m.resM+" de resistencia media e "+m.resFr+" de resistencia fraca\n " );
+    console.log("\n ele tem  "+this.Vatq+" de bonus de acerto, dando um dano medio de "+this.dano+"\n de resistencias ele possui"+ this.resFo+" de resistencia forte, "+this.resM+" de resistencia media e "+this.resFr+" de resistencia fraca\n " );
 
-    if (m.CD != 0)
+    if (CD != 0)
     {
         
-            console.log("sua CD de efeito é: "+ m.CD);
+            console.log("sua CD de efeito é: "+ this.CD);
         }
-    }
-    if (m.PM != 0)
+    
+    if (PM != 0)
     {
-        console.log("possuindo "+m.PM+" de PM's", );
+        console.log("possuindo "+this.PM+" de PM's", );
     }
 
     console.log("------------------------------------------------------------------\n");
 
+}
+
+
+
+function exibirMonstros() {
+    Monstros.forEach((Monstro, index) => {
+      console.log(`Monstro ${index + 1}: ${Monstro.exibirMonstro()}`);
+    });
+  }
+
+  https://github.com/login?client_id=01ab8ac9400c4e429b23&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3D01ab8ac9400c4e429b23%26prompt%3Dselect_account%26redirect_uri%3Dhttps%253A%252F%252Fvscode.dev%252Fredirect%26scope%3Dcodespace%2Bread%253Auser%2Brepo%2Buser%253Aemail%26state%3Dvscode%25253A%25252F%25252Fvscode.github-authentication%25252Fdid-authenticate%25253Fnonce%25253D6c430c099b5760e9%252526windowId%25253D2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // função que preenche a classe monstro com suas informações pelo usuario
-function criar(x)
+ criar(x)
 {
-    Monstro m;
+    
+    var nome, Vatq, dano, defesa, resFo, resM, resFr, pv, CD, PM, ND, tipo
     // pergunta e respostas são variaveis feitas para guardar as respostas do usuario, no caso do tipo e nivel do monstro são numeros que tem um varervalo definido o programa se nega a analisar algo diferente do necessario
-    char pergunta[4];
+    var pergunta;
     var resposta = 0;
-    m.nome = prompt("digite nome do Monstro %i \n", x);
+    nome = input.question("digite nome do Monstro " + x +" \n");
     
     do
     {
-        pergunta=prompt("você quer colocar alguma ND na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
+        pergunta=input.question("você quer colocar alguma ND na criatura " + x +" , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
 
     } while (pergunta != "sim" && pergunta != "nao");
     if (pergunta== "sim")
     {
         do
         {
-            m.ND=prompt("digite o nivel de desafio do Monstro, se deseja nd S escreva 21, S+ 22  \n");
+            ND=input.question("digite o nivel de desafio do Monstro, se deseja nd S escreva 21, S+ 22  \n");
            
-        } while (m.ND == 0.25 && m.ND == 0.5 || m.ND < 1 && m.ND > 22);
+        } while (ND == 0.25 && ND == 0.5 || ND < 1 && ND > 22);
     }
-    m.Vatq=prompt("digite o valor de ataque do Monstro %i \n", x);
+    Vatq=input.question("digite o valor de ataque do Monstro " + x +" \n", x);
     
 
-    m.dano=prompt("digite a media de dano do Monstro %i \n", x);
+    dano=input.question("digite a media de dano do Monstro " + x +" \n", x);
     
 
-    m.defesa=prompt("digite a defesa do Monstro %i \n", x);
+    defesa=input.question("digite a defesa do Monstro " + x +" \n", x);
    
-    m.resFo=prompt("digite a resistencia forte da criatura %i \n", x);
+    resFo=input.question("digite a resistencia forte da criatura " + x +" \n", x);
     
-    m.resM=prompt("digite a resistencia media da criatura %i \n", x);
-    
-
-    m.resFr=prompt("digite a resistencia fraca da criatura %i \n", x);
+    resM=input.question("digite a resistencia media da criatura " + x +" \n", x);
     
 
-    m.pv=prompt("digite os pontos de vida da criatura %i \n", x);
+    resFr=input.question("digite a resistencia fraca da criatura " + x +" \n", x);
+    
+
+    pv=input.question("digite os pontos de vida da criatura " + x +" \n", x);
     
     do
     {
-        m.tipo=prompt("digite o tipo de monstro: 1-solo, 2-lacaio e 3-especial\n", x);
-        
-    } while (m.tipo > 1 && m.tipo < 3);
+        var temp=input.question("digite o tipo de monstro: 1-solo, 2-lacaio e 3-especial\n", x);
+        if(tipo == 1){
+            tipo = "solo"
+        }
+        else if(tipo == 2){
+            tipo = "lacaio"
+        }
+        else if(tipo == 3){
+            tipo = "especial"
+        }
+    } while (tipo > 1 && tipo < 3);
     // ambos esses do-while servem para perguntar se o usuario quer adicionar alguma coisa opcional, caso queira pede para adicionar, do contrario ele preenche com um nulo.
     do
     {
-        pergunta=prompt("você quer colocar alguma cd na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
+        pergunta=input.question("você quer colocar alguma CD na criatura " + x +" , se sim escreva ''sim'', do contrario escreva 'nao' \n", x);
 
         // essa gambiarra ve se o usuario mandou "sim" ou não até ele escolher um dos dois, com um sim ele pode escrever o atributo, do contrario ele fica nulo
 
     } while (pergunta != "sim" && pergunta != "nao");
-    if (pergunta != "sim")
+    if (pergunta == "sim")
     {
-        m.CD=prompt("digite a CD efeito da criatura %i: \n", x);
+        CD=input.question("digite a CD efeito da criatura " + x +": \n", x);
         
     }
     else
     {
-        m.CD = 0;
+        CD = 0;
     }
     // reinicia a variavel pergunta
      
     // mesma coisa da CD
     do
     {
-        pergunta=prompt("você quer colocar PM's na criatura %i , se sim escreva ''sim'', do contrario escreva 'nao'  \n", x);
+        pergunta=input.question("você quer colocar PM's na criatura " + x +" , se sim escreva ''sim'', do contrario escreva 'nao'  \n", x);
 
     } while (pergunta != "sim" && pergunta != "nao");
-    if (pergunta != "sim")
+    if (pergunta == "sim")
 
     {
 
-        m.PM=prompt("digite a quantidade de pontos de mana da criatura %i \n", x);
+        PM=input.question("digite a quantidade de pontos de mana da criatura " + x +" \n", x);
         
     }
     else
     {
-        m.PM = 0;
+        PM = 0;
     }
-
-    return m;
+let m = new Monstro(nome, Vatq, dano, defesa, resFo, resFr, pv, CD, PM, ND, tipo)
+Monstros.push(m)
 }
 /*
 void analisar(Monstro bicho, var numero)

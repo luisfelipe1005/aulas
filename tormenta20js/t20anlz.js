@@ -1,5 +1,5 @@
 export default class Monstro {
-  constructor(nome, Vatq, dano, defesa, resFo, resFr, pv, Cd, PM, ND, tipo) {
+  constructor(nome, Vatq, dano, defesa, resFo, resM, resFr, pv, CD, PM, ND, tipo) {
     this.nome = nome;
     this.Vatq = Vatq;
     this.dano = dano;

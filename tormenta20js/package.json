@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "tormenta20js",
+  "version": "1.0.0",
+  "description": "coisa",
+  "main": "bichot20.js",
+  "scripts": {
+    "test": "testar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisfelipe1005/aulas.git"
+  },
+  "keywords": [
+    "tormenta20"
+  ],
+  "author": "luis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisfelipe1005/aulas/issues"
+  },
+  "homepage": "https://github.com/luisfelipe1005/aulas#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
